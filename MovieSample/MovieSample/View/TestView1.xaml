@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="MovieSample.View.TestView1">
+    <ContentPage.Content>
+        <StackLayout Padding="20">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="40*"/>
+                    <ColumnDefinition Width="30*"/>
+                    <ColumnDefinition Width="30*"/>
+                </Grid.ColumnDefinitions>
+
+                <Label 
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    FontSize="18"
+                    Text="RELEASE DATE" />
+                <Label 
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    FontSize="18"
+                    Text="DURATION" />
+                <Label 
+                    Grid.Row="0"
+                    Grid.Column="2"
+                    FontSize="18"
+                    Text="GENRE" />
+
+                <Label 
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    FontSize="18"
+                    FontAttributes="Bold"
+                    Text="August 28" />
+
+                <Label 
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    FontSize="18"
+                    FontAttributes="Bold"
+                    Text="112 min" />
+
+                <Label 
+                    Grid.Row="1"
+                    Grid.Column="2"
+                    FontSize="18"
+                    FontAttributes="Bold"
+                    Text="DRAMA | ACTION" />
+
+
+
+            </Grid>
+
+        </StackLayout>
+        
+    </ContentPage.Content>
+</ContentPage>
