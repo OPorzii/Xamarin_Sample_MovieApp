@@ -6,7 +6,7 @@
              mc:Ignorable="d"
              x:Class="MovieSample.View.MovieDetailView">
     <ContentPage.Content>
-        <StackLayout Padding="20">
+        <StackLayout Padding="20" Orientation="Vertical">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
@@ -83,7 +83,10 @@
                     Text="DRAMA" />
             </Grid>
 
-
+            <StackLayout Margin="0,25,0,25">
+                <Label Text="Detail" FontAttributes="Bold" FontSize="20"/>
+                <Label Text="{Binding overview}" FontSize="16"/>
+            </StackLayout>
 
 
         </StackLayout>

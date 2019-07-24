@@ -10,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace MovieSample.View
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class MainPage : TabbedPage
+    public partial class TestView2 : ContentPage
     {
-        public MainPage()
+        public TestView2()
         {
             InitializeComponent();
         }

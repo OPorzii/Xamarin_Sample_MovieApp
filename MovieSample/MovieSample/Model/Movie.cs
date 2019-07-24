@@ -4,7 +4,7 @@ using System.Text;
 
 namespace MovieSample.Model
 {
-    class Movie
+    public class Movie
     {
         public int vote_count { get; set; }
         public int id { get; set; }
