@@ -11,15 +11,12 @@ namespace MovieSample.ServicesHandler
     public class MovieServices
     {
 
-        readonly MovieNowPlaying<Movie> _movieNowPlaying = new MovieNowPlaying<Movie>();
+        readonly MovieNowPlaying _movieNowPlaying = new MovieNowPlaying();
 
-        public async Task<ObservableCollection<Movie>> GetMovies()
+        public async Task<ObservableCollection<Movie>> GetNowPlaying()
         {
             var movies = await  _movieNowPlaying.GetAllMovies();
             return movies;
         }
-
-     
-
     }
 }

@@ -8,29 +8,33 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MovieSample.ModelView
+namespace MovieSample.ViewModels
 {
     public class MovieViewModel : INotifyPropertyChanged
     {
+        public MovieViewModel()
+        {
+            InitializeGetMoviesAsync();
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         MovieServices _movieServices = new MovieServices();
 
         private ObservableCollection<Movie> _movies;
-
         public ObservableCollection<Movie> Movies
         {
             get
             {
                 return _movies;
             }
-            set {
+            set
+            {
                 _movies = value;
                 OnPropertyChanged();
 
             }
         }
-
 
         private bool _isBusy;
         public bool IsBusy
@@ -48,7 +52,8 @@ namespace MovieSample.ModelView
             try
             {
                 IsBusy = true;
-                Movies = await _movieServices.GetMovies();
+                _movieServices = new MovieServices();
+                Movies = await _movieServices.GetNowPlaying();
             }
             finally
             {
@@ -57,12 +62,11 @@ namespace MovieSample.ModelView
         }
 
 
-
-
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+
 
 
     }

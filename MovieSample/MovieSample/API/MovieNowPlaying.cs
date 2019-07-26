@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace MovieSample.API
 {
-    public class MovieNowPlaying<T>
+    public class MovieNowPlaying
     {
 
         private const string API_URL = "https://api.themoviedb.org/3/movie/now_playing";
@@ -18,18 +18,17 @@ namespace MovieSample.API
 
         readonly HttpClient _client = new HttpClient();
 
-        public async Task<ObservableCollection<T>> GetAllMovies()
+        public async Task<ObservableCollection<Movie>> GetAllMovies()
         {
-            var json = await _client.GetStringAsync("?api_key=" + API_URL + API_KEY + "&language=en-US&page=1");
+            var json = await _client.GetStringAsync(API_URL + "?api_key=" + API_KEY + "&language=en-US&page=1");
 
             JObject jb = JObject.Parse(json);
 
-            var movies_list = jb["results"].ToObject<ObservableCollection<T>>();
+            var movies_list = jb["results"].ToObject<ObservableCollection<Movie>>();
 
             return movies_list;
 
         }
-
 
     }
 }

@@ -3,9 +3,14 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" mc:Ignorable="d"
-             xmlns:moviesVM="clr-namespace:MovieSample.ModelView"
+             xmlns:local="clr-namespace:MovieSample.ViewModels"
              NavigationPage.HasNavigationBar="False" x:Class="MovieSample.View.HomePage">
 
+
+    <ContentPage.BindingContext>
+        <local:MovieViewModel/>
+    </ContentPage.BindingContext>
+    
 
     <ContentPage.Content>
         <StackLayout Padding="15">
@@ -15,7 +20,8 @@
                 <Label Text="Movies playing Today" FontSize="18" FontAttributes="Bold" />
                 <Label Text="See All" HorizontalOptions="EndAndExpand" FontSize="18" />
             </StackLayout>
-            <ListView x:Name="moviesList"  ItemSelected="MoviesList_ItemSelectedAsync" RowHeight="200">
+            <ActivityIndicator IsRunning="{Binding IsBusy,Mode=TwoWay}" IsVisible="{Binding IsBusy}"/>
+            <ListView x:Name="moviesList"  ItemsSource="{Binding Movies}" ItemSelected="MoviesList_ItemSelectedAsync" RowHeight="200">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -30,11 +36,11 @@
                                     <ColumnDefinition Width="120" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
-                                <Image Grid.Row="0" Grid.Column="0" Grid.RowSpan="4" Aspect="Fill" Source="{Binding poster_path, StringFormat='https://image.tmdb.org/t/p/w185/{0:N}'}" />
+                                <Image Grid.Row="0" Grid.Column="0" Grid.RowSpan="4" Aspect="Fill" Source="{Binding poster_path, StringFormat='https://image.tmdb.org/t/p/w185/{0}'}" />
                                 <Label Grid.Row="0" Grid.Column="1" Text="{Binding title}" FontSize="Large" FontAttributes="Bold" VerticalOptions="CenterAndExpand" />
                                 <Label Grid.Row="1" Grid.Column="1" Text="{Binding body}" FontSize="Default" VerticalOptions="StartAndExpand" />
                                 <BoxView Grid.Row="2" Grid.Column="1" />
-                                <BoxView Grid.Row="3" Grid.Column="1" />
+                                <Label Text="{Binding vote_average, StringFormat='score = {0:0.##}'}" FontSize="Medium"  Grid.Row="3" Grid.Column="1" />
                             </Grid>
                         </ViewCell>
                     </DataTemplate>

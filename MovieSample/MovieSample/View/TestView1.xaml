@@ -4,7 +4,13 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
+             xmlns:testVM="clr-namespace:MovieSample.ModelView"
              x:Class="MovieSample.View.TestView1">
+
+    <ContentPage.BindingContext>
+        <testVM:TestVM/>
+    </ContentPage.BindingContext>
+
     <ContentPage.Content>
         <StackLayout Padding="20">
             <Grid>
@@ -59,6 +65,8 @@
 
 
             </Grid>
+
+            <Button Text="TEST COMMAND" Command="{Binding TestCommand}"/>
 
         </StackLayout>
         
